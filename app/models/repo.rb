@@ -64,13 +64,13 @@ class Repo < ActiveRecord::Base
     users.where.not(token: nil)
   end
 
-  private
-
   def organization
     if full_github_name
       full_github_name.split("/").first
     end
   end
+
+  private
 
   def self.report_update_failure(error, attributes)
     Raven.capture_exception(

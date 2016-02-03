@@ -7,6 +7,7 @@ class RepoSerializer < ActiveModel::Serializer
     :github_id,
     :id,
     :in_organization,
+    :owner_name,
     :price_in_cents,
     :price_in_dollars,
     :private,
@@ -41,5 +42,9 @@ class RepoSerializer < ActiveModel::Serializer
 
   def has_subscription?
     scope.subscribed_repos.include?(object)
+  end
+
+  def owner_name
+    object.owner.name
   end
 end
