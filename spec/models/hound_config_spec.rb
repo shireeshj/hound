@@ -1,5 +1,4 @@
-require "spec_helper"
-require "app/models/hound_config"
+require "rails_helper"
 
 describe HoundConfig do
   describe "#content" do
@@ -83,13 +82,13 @@ describe HoundConfig do
         it "returns true" do
           commit = stubbed_commit(
             ".hound.yml" => <<-EOS.strip_heredoc
-              python:
+              befunge:
                 enabled: true
             EOS
           )
           hound_config = HoundConfig.new(commit)
 
-          expect(hound_config).to be_enabled_for("python")
+          expect(hound_config).to be_enabled_for("befunge")
         end
       end
 
@@ -97,13 +96,13 @@ describe HoundConfig do
         it "returns true" do
           commit = stubbed_commit(
             ".hound.yml" => <<-EOS.strip_heredoc
-              python:
+              befunge:
                 Enabled: true
             EOS
           )
           hound_config = HoundConfig.new(commit)
 
-          expect(hound_config).to be_enabled_for("python")
+          expect(hound_config).to be_enabled_for("befunge")
         end
       end
 
@@ -125,13 +124,13 @@ describe HoundConfig do
         it "returns false" do
           commit = stubbed_commit(
             ".hound.yml" => <<-EOS.strip_heredoc
-              python:
+              befunge:
                 enabled: false
             EOS
           )
           hound_config = HoundConfig.new(commit)
 
-          expect(hound_config).not_to be_enabled_for("python")
+          expect(hound_config).not_to be_enabled_for("befunge")
         end
       end
     end

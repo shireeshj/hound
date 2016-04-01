@@ -15,14 +15,6 @@ module ConfigurationHelper
     config_url("houndci/hound", "config/style_guides/.jshintignore")
   end
 
-  def jscs_config_url
-    config_url("thoughtbot/guides", "style/javascript/.jscsrc")
-  end
-
-  def eslint_config_url
-    config_url("houndci/eslint", "config/.eslintrc")
-  end
-
   def scss_config_url
     config_url("houndci/scss", "config/default.yml")
   end

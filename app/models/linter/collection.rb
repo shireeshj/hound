@@ -2,13 +2,10 @@ module Linter
   class Collection
     LINTERS = [
       Linter::CoffeeScript,
-      Linter::Eslint,
       Linter::Go,
       Linter::Haml,
-      Linter::Jscs,
       Linter::Jshint,
       Linter::Remark,
-      Linter::Python,
       Linter::Ruby,
       Linter::Scss,
       Linter::Swift,
