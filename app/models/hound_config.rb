@@ -3,19 +3,18 @@ class HoundConfig
   BETA_LANGUAGES = %w(
     eslint
     jscs
-    jshint
     remark
     python
   )
   LANGUAGES = %w(
-    coffeescript
-    go
-    haml
-    javascript
-    python
-    ruby
-    scss
-    swift
+    coffeelint
+    golint
+    haml-lint
+    jshint
+    flake8
+    rubocop
+    scss-lint
+    swiftlint
   )
 
   attr_reader_initialize :commit
