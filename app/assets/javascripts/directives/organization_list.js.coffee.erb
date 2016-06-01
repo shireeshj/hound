@@ -59,6 +59,6 @@ App.directive 'organizationList',
 
     loadRepos().then ->
       loadUserPaymentInfo().then ->
-        if scope.repos.length < 1
+        if scope.repos.length == 0
           scope.sync()
 ]
