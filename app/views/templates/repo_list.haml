@@ -1,5 +1,5 @@
 %ul.repos
-  %li.repo{'repo' => '',
+  %li.repo{ 'repo' => '',
     'ng-repeat' => 'repo in repos | filter:search',
       'ng-class' => '{"repo--active": repo.active, |
         "repo--processing": processing}' }
