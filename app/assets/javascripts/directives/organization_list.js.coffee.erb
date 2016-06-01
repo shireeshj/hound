@@ -1,4 +1,5 @@
-App.directive 'organizationList', ['Repo', 'Sync', 'User', '$timeout', (Repo, Sync, User, $timeout) ->
+App.directive 'organizationList',
+['Repo', 'Sync', 'User', '$timeout', (Repo, Sync, User, $timeout) ->
   scope: {}
   templateUrl: '/templates/organization_list'
   link: (scope, element, attributes) ->

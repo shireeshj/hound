@@ -19,7 +19,7 @@ gem "haml-rails"
 gem "high_voltage"
 gem "inifile"
 gem "jquery-rails", "~> 4.0.0"
-gem "lodash-rails"
+gem 'rails-assets-lodash', source: 'https://rails-assets.org'
 gem "neat"
 gem "octokit"
 gem "omniauth-github"
