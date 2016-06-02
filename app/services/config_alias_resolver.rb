@@ -1,7 +1,8 @@
 class ConfigAliasResolver
   ALIASES = {
-    jshint: [:javascript, :java_script],
-    coffeescript: [:coffee_script],
+    "javascript" => "jshint",
+    "java_script" => "jshint",
+    "coffee_script" => "coffeescript"
   }.freeze
 
   def initialize(config)
@@ -12,16 +13,9 @@ class ConfigAliasResolver
     config_with_aliases_resolved = {}
 
     @config.each_pair do |config_key, config_value|
-      config_merged = false
-
-      ALIASES.each_pair do |linter, aliases|
-        if !config_merged && aliases.include?(config_key)
-          config_with_aliases_resolved[linter] = config_value
-          config_merged = true
-        end
-      end
-
-      if !config_merged
+      if ALIASES.keys.include? config_key
+        config_with_aliases_resolved[ALIASES[config_key]] = config_value
+      else
         config_with_aliases_resolved[config_key] = config_value
       end
     end

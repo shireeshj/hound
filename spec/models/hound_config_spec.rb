@@ -71,6 +71,20 @@ describe HoundConfig do
       end
     end
 
+    context "given an alias that is disabled in the config file" do
+      it "returns false" do
+        commit = stubbed_commit(
+          ".hound.yml" => <<-EOS.strip_heredoc
+            java_script:
+              enabled: false
+          EOS
+        )
+        hound_config = HoundConfig.new(commit)
+
+        expect(hound_config).not_to be_enabled_for("jshint")
+      end
+    end
+
     context "given an unsupported language" do
       it "returns false" do
         commit = stubbed_commit(".hound.yml" => "")
