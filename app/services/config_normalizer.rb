@@ -1,5 +1,4 @@
 class ConfigNormalizer
-
   def initialize(config)
     @config = config
   end
@@ -10,7 +9,7 @@ class ConfigNormalizer
     @config.each_pair do |key, value|
       normalized_key = normalize_key key
 
-      if(value.is_a? Hash)
+      if value.is_a? Hash
         normalized_config[normalized_key] = ConfigNormalizer.new(value).run
       else
         normalized_config[normalized_key] = value

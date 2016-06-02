@@ -16,22 +16,17 @@ describe HoundConfig do
       hound_config = HoundConfig.new(commit)
 
       expect(hound_config.content["ruby"]).to eq(
-        {
-          "enabled" => true,
-          "config_file" => "config/rubocop.yml",
-        },
+        "enabled" => true,
+        "config_file" => "config/rubocop.yml",
       )
     end
   end
-
 
   describe "#enabled_for?" do
     context "given a language that isn't in the config file" do
       context "given the language is a default" do
         it "return true" do
-          commit = stubbed_commit(
-            ".hound.yml" => ""
-          )
+          commit = stubbed_commit(".hound.yml" => "")
           hound_config = HoundConfig.new(commit)
 
           expect(hound_config).to be_enabled_for("ruby")
@@ -40,9 +35,7 @@ describe HoundConfig do
 
       context "given the language is not a default" do
         it "return false" do
-          commit = stubbed_commit(
-            ".hound.yml" => ""
-          )
+          commit = stubbed_commit(".hound.yml" => "")
           hound_config = HoundConfig.new(commit)
 
           expect(hound_config).not_to be_enabled_for("remark")

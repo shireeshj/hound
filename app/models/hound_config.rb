@@ -12,7 +12,7 @@ class HoundConfig
     "ruby" => { "enabled" => true },
     "scss" => { "enabled" => true },
     "swift" => { "enabled" => true },
-  }
+  }.freeze
 
   attr_reader_initialize :commit
 
