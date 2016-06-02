@@ -1,23 +1,21 @@
 class HoundConfig
+  BETA_LINTERS = [
+    "eslint",
+    "jscs",
+    "pyton",
+    "remark",
+  ]
+
   CONFIG_FILE = ".hound.yml"
-  DEFAULT_CONFIG = {
-    "coffeescript" => { "enabled" => true },
-    "eslint" => { "enabled" => false },
-    "go" => { "enabled" => true },
-    "haml" => { "enabled" => true },
-    "jscs" => { "enabled" => false },
-    "jshint" => { "enabled" => true },
-    "remark" => { "enabled" => false },
-    "python" => { "enabled" => false },
-    "ruby" => { "enabled" => true },
-    "scss" => { "enabled" => true },
-    "swift" => { "enabled" => true },
-  }.freeze
+  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.inject({}) do |config, name|
+    config[name] = { "enabled" => !BETA_LINTERS.include?(name) }
+    config
+  end.freeze
 
   attr_reader_initialize :commit
 
   def content
-    merged_config
+    @merged_config ||= merge(DEFAULT_CONFIG, resolved_aliases_config)
   end
 
   def linter_enabled?(name)
@@ -34,19 +32,15 @@ class HoundConfig
   private
 
   def resolved_aliases_config
-    @resolved_aliases_config ||= ConfigAliasResolver.new(normalized_config).run
+    ConfigAliasResolver.new(normalized_config).run
   end
 
   def normalized_config
-    @normalized_config ||= ConfigNormalizer.new(parsed_config).run
+    ConfigNormalizer.new(parsed_config).run
   end
 
   def parsed_config
-    @parsed_config ||= parse(commit.file_content(CONFIG_FILE))
-  end
-
-  def merged_config
-    @merged_config ||= merge(DEFAULT_CONFIG, resolved_aliases_config)
+    parse(commit.file_content(CONFIG_FILE))
   end
 
   def merge(base_hash, derived_hash)

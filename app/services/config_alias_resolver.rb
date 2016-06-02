@@ -2,7 +2,7 @@ class ConfigAliasResolver
   ALIASES = {
     "javascript" => "jshint",
     "java_script" => "jshint",
-    "coffee_script" => "coffeescript"
+    "coffee_script" => "coffeescript",
   }.freeze
 
   def initialize(config)
