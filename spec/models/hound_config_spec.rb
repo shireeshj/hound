@@ -1,7 +1,7 @@
 require "spec_helper"
 require "app/models/config/parser"
-require "app/services/config_normalizer"
-require "app/services/config_alias_resolver"
+require "app/services/normalize_config"
+require "app/services/resolve_config_aliases"
 require "app/models/hound_config"
 
 describe HoundConfig do

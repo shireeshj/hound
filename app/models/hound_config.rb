@@ -4,10 +4,10 @@ class HoundConfig
     "jscs",
     "pyton",
     "remark",
-  ]
+  ].freeze
 
   CONFIG_FILE = ".hound.yml"
-  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.inject({}) do |config, name|
+  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.reduce({}) do |config, name|
     config[name] = { "enabled" => !BETA_LINTERS.include?(name) }
     config
   end.freeze
@@ -32,11 +32,11 @@ class HoundConfig
   private
 
   def resolved_aliases_config
-    ConfigAliasResolver.new(normalized_config).run
+    ResolveConfigAliases.new(normalized_config).run
   end
 
   def normalized_config
-    ConfigNormalizer.new(parsed_config).run
+    NormalizeConfig.new(parsed_config).run
   end
 
   def parsed_config
