@@ -361,6 +361,7 @@ DEPENDENCIES
   angularjs-rails
   astrolabe
   attr_extras
+  autoprefixer-rails
   bourbon
   bundler-audit
   byebug
