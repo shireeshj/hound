@@ -1,6 +1,14 @@
 class NormalizeConfig
   def self.run(config)
-    config.reduce({}) do |normalized_config, (key, value)|
+    new(config).normalize
+  end
+
+  def initialize(config)
+    @config = config
+  end
+
+  def normalize
+    @config.inject({}) do |normalized_config, (key, value)|
       normalized_key = normalize_key key
       if value.is_a? Hash
         normalized_config[normalized_key] = NormalizeConfig.run(value)
@@ -13,7 +21,7 @@ class NormalizeConfig
 
   private
 
-  def self.normalize_key(key)
+  def normalize_key(key)
     key.downcase
   end
 end

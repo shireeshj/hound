@@ -6,7 +6,15 @@ class ResolveConfigAliases
   }.freeze
 
   def self.run(config)
-    config.reduce({}) do |config_without_aliases, (config_key, config_value)|
+    new(config).resolve_aliases
+  end
+
+  def initialize(config)
+    @config = config
+  end
+
+  def resolve_aliases
+    @config.reduce({}) do |config_without_aliases, (config_key, config_value)|
       if ALIASES.keys.include? config_key
         config_without_aliases[ALIASES[config_key]] = config_value
       else
