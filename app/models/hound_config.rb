@@ -15,7 +15,7 @@ class HoundConfig
   attr_reader_initialize :commit
 
   def content
-    @merged_config ||= merge(DEFAULT_CONFIG, resolved_aliases_config)
+    @merged_config ||= DEFAULT_CONFIG.deep_merge(resolved_aliases_config)
   end
 
   def linter_enabled?(name)
@@ -32,25 +32,15 @@ class HoundConfig
   private
 
   def resolved_aliases_config
-    ResolveConfigAliases.new(normalized_config).run
+    ResolveConfigAliases.run(normalized_config)
   end
 
   def normalized_config
-    NormalizeConfig.new(parsed_config).run
+    NormalizeConfig.run(parsed_config)
   end
 
   def parsed_config
     parse(commit.file_content(CONFIG_FILE))
-  end
-
-  def merge(base_hash, derived_hash)
-    result = base_hash.merge(derived_hash)
-    keys_appearing_in_both = base_hash.keys & derived_hash.keys
-    keys_appearing_in_both.each do |key|
-      next unless base_hash[key].is_a?(Hash)
-      result[key] = merge(base_hash[key], derived_hash[key])
-    end
-    result
   end
 
   def parse(file_content)

@@ -5,12 +5,8 @@ class ResolveConfigAliases
     "coffee_script" => "coffeescript",
   }.freeze
 
-  def initialize(config)
-    @config = config
-  end
-
-  def run
-    @config.inject({}) do |config_without_aliases, (config_key, config_value)|
+  def self.run(config)
+    config.reduce({}) do |config_without_aliases, (config_key, config_value)|
       if ALIASES.keys.include? config_key
         config_without_aliases[ALIASES[config_key]] = config_value
       else

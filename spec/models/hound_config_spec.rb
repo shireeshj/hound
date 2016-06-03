@@ -43,7 +43,7 @@ describe HoundConfig do
       end
     end
 
-    context "given a language that is disabled in the config file" do
+    context "when the given language is disabled" do
       it "returns false" do
         commit = stubbed_commit(
           ".hound.yml" => <<-EOS.strip_heredoc
@@ -57,7 +57,7 @@ describe HoundConfig do
       end
     end
 
-    context "given a language that is enabled in the config file" do
+    context "when the given language is enabled" do
       it "returns true" do
         commit = stubbed_commit(
           ".hound.yml" => <<-EOS.strip_heredoc
@@ -71,7 +71,7 @@ describe HoundConfig do
       end
     end
 
-    context "given an alias that is disabled in the config file" do
+    context "when the given language is an alias, and is disabled" do
       it "returns false" do
         commit = stubbed_commit(
           ".hound.yml" => <<-EOS.strip_heredoc
