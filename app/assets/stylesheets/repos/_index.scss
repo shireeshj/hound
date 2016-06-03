@@ -1,8 +1,9 @@
 .repo {
   @include clearfix;
   border-top: 1px solid $base-border-color;
-  display: table;
-  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 2em;
   position: relative;
   width: 100%;
@@ -26,7 +27,7 @@
   }
 
   .repo-name {
-    padding-left: 1.4em;
+    padding-left: 1.5em;
   }
 }
 
@@ -51,14 +52,13 @@
 }
 
 .repo-name {
-  @include transition(all 0.25s linear);
+  @include ellipsis;
   color: $medium-font-color;
-  display: table-cell;
   font-size: 1.5em;
   font-weight: 300;
   height: 100%;
-  position: relative;
-  vertical-align: middle;
+  padding-bottom: 2px;
+  transition: all 0.25s linear;
 
   @include media($small-screen) {
     display: block;
@@ -67,16 +67,11 @@
     letter-spacing: 1px;
     margin-bottom: 0.6em;
   }
-
-  span {
-    @include ellipsis;
-    display: inline-block;
-    padding-bottom: 2px;
-  }
 }
 
 .repo-activation-toggle {
-  display: table-cell;
+  margin-left: auto;
+  align-self: flex-end;
   height: 100%;
   padding-left: 1em;
   text-align: right;
@@ -123,17 +118,17 @@
 }
 
 .repo-toggle {
-  @include transition(none);
   @include user-select(none);
   background: rgba($purple, 0.1);
-  border: 2px solid $purple;
   border-radius: 20px;
+  border: 2px solid $purple;
   color: $purple;
   display: inline-block;
   font-weight: 400;
   letter-spacing: 1px;
   padding: 0.4em 1em;
   text-align: center;
+  transition: none;
   vertical-align: middle;
 
   @include media($small-screen) {

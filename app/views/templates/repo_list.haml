@@ -23,13 +23,13 @@
     %h2.organization-header-title
       Some Organization Name
     .organization-header-toggle
-      %p.organization-header-label
+      %span.organization-header-label
         Use organization-wide config
       %input#toggle{ 'class' => 'organization-header-toggle-input',
         'type' => 'checkbox', 'name' => 'toggle' }
-      %label.organization-header-toggle-switch{ 'for' => 'toggle' }
+      %label.toggle-switch{ 'for' => 'toggle' }
     .organization-header-config
-      %p.organization-header-label
+      %span.organization-header-label
         Use hound.yml from
       %select.organization-header-select
         %option thoughtbot/hound
