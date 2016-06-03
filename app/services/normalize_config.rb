@@ -4,7 +4,7 @@ class NormalizeConfig
   end
 
   def run
-    @config.reduce({}) do |normalized_config, (key, value)|
+    @config.inject({}) do |normalized_config, (key, value)|
       normalized_key = normalize_key key
       if value.is_a? Hash
         normalized_config[normalized_key] = NormalizeConfig.new(value).run

@@ -7,7 +7,7 @@ class HoundConfig
   ].freeze
 
   CONFIG_FILE = ".hound.yml"
-  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.reduce({}) do |config, name|
+  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.inject({}) do |config, name|
     config[name] = { "enabled" => !BETA_LINTERS.include?(name) }
     config
   end.freeze

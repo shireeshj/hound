@@ -10,7 +10,7 @@ class ResolveConfigAliases
   end
 
   def run
-    @config.reduce({}) do |config_without_aliases, (config_key, config_value)|
+    @config.inject({}) do |config_without_aliases, (config_key, config_value)|
       if ALIASES.keys.include? config_key
         config_without_aliases[ALIASES[config_key]] = config_value
       else
