@@ -38,8 +38,8 @@
 .organization-header-select {
   @include appearance(none);
   @include ellipsis(300px);
-  background-position: calc(100% - 12px) calc(50% + 1px);
   background: $white image-url("select-arrow.svg") no-repeat;
+  background-position: calc(100% - 12px) calc(50% + 1px);
   border-radius: 3px;
   border: 2px solid $base-border-color;
   color: $medium-font-color;
