@@ -23,8 +23,8 @@
 .repo-search-tools-input {
   @include box-sizing(border-box);
   background-color: $base-background-color;
-  border-radius: 3px;
   border: 2px solid $base-border-color;
+  border-radius: 3px;
   color: $light-font-color;
   display: block;
   font-weight: 400;
@@ -80,8 +80,8 @@
 .repo-tools-refresh-button,
 .repo-tools-private-button {
   background-color: $base-background-color;
-  border-radius: 3px;
   border: 2px solid $base-border-color;
+  border-radius: 3px;
   color: $light-font-color;
   font-size: 1em;
   font-weight: 400;

@@ -1,6 +1,6 @@
 .organization {
-  border-radius: $base-border-radius;
   border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
   width: 100%;
 }
 
@@ -40,11 +40,11 @@
   @include ellipsis(300px);
   background: $white image-url("select-arrow.svg") no-repeat;
   background-position: calc(100% - 12px) calc(50% + 1px);
-  border-radius: 3px;
   border: 2px solid $base-border-color;
+  border-radius: 3px;
   color: $medium-font-color;
   cursor: pointer;
-  margin: auto .5em;
+  margin: auto 0.5em;
   padding: 7px 2em 9px 1em;
   position: relative;
 

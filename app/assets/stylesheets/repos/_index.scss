@@ -70,9 +70,9 @@
 }
 
 .repo-activation-toggle {
-  margin-left: auto;
   align-self: flex-end;
   height: 100%;
+  margin-left: auto;
   padding-left: 1em;
   text-align: right;
   vertical-align: middle;
@@ -120,8 +120,8 @@
 .repo-toggle {
   @include user-select(none);
   background: rgba($purple, 0.1);
-  border-radius: 20px;
   border: 2px solid $purple;
+  border-radius: 20px;
   color: $purple;
   display: inline-block;
   font-weight: 400;
