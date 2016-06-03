@@ -35,7 +35,7 @@ $dropdown-arrow: $white image-url("select-arrow.svg") no-repeat;
 }
 
 .organization-header-select {
-  @include appearance(none);
+  appearance: none;
   @include ellipsis(300px);
   background: $dropdown-arrow no-repeat calc(100% - 12px) calc(50% + 1px);
   border: 2px solid $base-border-color;
