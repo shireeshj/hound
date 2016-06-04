@@ -6,10 +6,10 @@ class HoundConfig
     "remark",
   ].freeze
   CONFIG_FILE = ".hound.yml"
-  DEFAULT_CONFIG = Linter::Collection::LINTER_NAMES.inject({}) do |config, name|
-    config[name] = { "enabled" => !BETA_LINTERS.include?(name) }
-    config
-  end.freeze
+  DEFAULT_CONFIG =
+    Linter::Collection.linter_names.each.with_object({}) do |name, config|
+      config[name] = { "enabled" => !BETA_LINTERS.include?(name) }
+    end.freeze
 
   attr_reader_initialize :commit
 

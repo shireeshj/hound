@@ -13,9 +13,6 @@ module Linter
       Linter::Scss,
       Linter::Swift,
     ].freeze
-    LINTER_NAMES = LINTERS.map do |linter_class|
-      linter_class.name.demodulize.downcase
-    end
 
     def self.for(filename:, **linter_args)
       linter_classes = LINTERS.
@@ -23,6 +20,10 @@ module Linter
         map { |linter_class| linter_class.new(**linter_args) }
 
       new(linter_classes.presence || default_linter(**linter_args))
+    end
+
+    def self.linter_names
+      LINTERS.map { |klass| klass.name.demodulize.downcase }
     end
 
     attr_reader :linters

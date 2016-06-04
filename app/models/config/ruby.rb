@@ -27,7 +27,7 @@ module Config
     end
 
     def legacy?
-      (configured_languages & Linter::Collection::LINTER_NAMES).empty?
+      (configured_languages & Linter::Collection.linter_names).empty?
     end
 
     def configured_languages
